@@ -1,10 +1,10 @@
 
 class MutNucleotide{
 
-    base;
-    mutationAllowed;
+    base: string;
+    mutationAllowed: boolean;
 
-    constructor(base, mutationAllowed){
+    constructor(base: string, mutationAllowed: boolean){
         this.base = base;
         this.mutationAllowed = mutationAllowed;
     };

@@ -1,14 +1,13 @@
 
 class MutStrand {
 
-    uniqueID;
-    oxDNAID;
-    preNucs;
-    preNucs = [];
-    nucs = [];
+    uniqueID: number;
+    oxDNAID: number;
+    preNucs: MutNucleotide[];
+    nucs: MutNucleotide[];
     mutationAllowed = false;
 
-    constructor(strand) {
+    constructor(strand: Strand) {
         this.uniqueID = Math.floor(Math.random() * 16777215);
         this.oxDNAID = strand.id;
         let seq = strand.getSequence();

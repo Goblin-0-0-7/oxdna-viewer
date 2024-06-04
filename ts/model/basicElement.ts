@@ -8,6 +8,7 @@
 abstract class BasicElement {
     id: number; //location in world - all systems
     sid: number; //in-system ID, only used if in a temporary system
+    selected: boolean = false;
     label: string;
     n3: BasicElement | null;
     n5: BasicElement | null;
@@ -57,6 +58,7 @@ abstract class BasicElement {
     }
 
     select() {
+        this.selected = true;
         selectedBases.add(this);
         this.updateColor();
 
@@ -68,6 +70,7 @@ abstract class BasicElement {
     }
 
     deselect() {
+        this.selected = false;
         selectedBases.delete(this);
         this.updateColor();
 

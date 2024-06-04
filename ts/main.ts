@@ -110,6 +110,9 @@ const editHistory = new EditHistory(); // Track do/undo
 var tmpSystems: System[] = [] // Track memory for newly created systems
 var topologyEdited: Boolean = false; // to keep track of if the topology was edited at any point.
 
+// Mutation stuff
+const mutationStrands = new Array();
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////                       File input                           ////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////

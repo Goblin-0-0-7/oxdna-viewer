@@ -1,6 +1,5 @@
 
-var mut;
-(function (mut) {
+module mut {
 
     function mutateStrands(){
         mutationStrands.forEach(s => {
@@ -14,11 +13,11 @@ var mut;
         });
     }
 
-    function mutateBase(nuc){
+    function mutateBase(nuc: MutNucleotide){
         nuc.base = "A"
     }
 
-    function findStrandByID(id){
+    function findStrandByID(id: number){
         return systems[0].strands.find(s => s.id === id);
     }
-})(mut || (mut = {}));
+}
