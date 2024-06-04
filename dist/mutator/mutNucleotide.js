@@ -1,24 +1,19 @@
-
-class MutNucleotide{
-
-    base: string;
-    mutationAllowed: boolean;
-    propBases: number[] = [0.25, 0.25, 0.25, 0.25]; // A, C, G, T
-
-    constructor(base: string, mutationAllowed: boolean){
+class MutNucleotide {
+    base;
+    mutationAllowed;
+    propBases = [0.25, 0.25, 0.25, 0.25]; // A, C, G, T
+    constructor(base, mutationAllowed) {
         this.base = base;
         this.mutationAllowed = mutationAllowed;
-    };
-
-    mutate(){
+    }
+    ;
+    mutate() {
         this.changeBase();
     }
-
-    changeBase(){
-        const randomNum = Math.random()
+    changeBase() {
+        const randomNum = Math.random();
         let cumulativeProp = 0;
         let newBase = '';
-
         for (let i = 0; i < this.propBases.length; i++) {
             cumulativeProp += this.propBases[i];
             if (randomNum <= cumulativeProp) {
@@ -26,18 +21,16 @@ class MutNucleotide{
                 break;
             }
         }
-
         this.base = newBase;
     }
-
-    setWeightBases(weightA: number, weightC: number, weightG: number, weightT: number){
+    setWeightBases(weightA, weightC, weightG, weightT) {
         let totalWeight = weightA + weightC + weightG + weightT;
-        if (totalWeight != 1){
+        if (totalWeight != 1) {
             console.error("Error: Total weight of bases is not equal to 1");
         }
         else {
             this.propBases = [weightA, weightC, weightG, weightT];
         }
     }
-
-};
+}
+;

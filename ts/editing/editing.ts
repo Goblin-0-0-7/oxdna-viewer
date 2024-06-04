@@ -586,6 +586,9 @@ function mutateWrapper(){
             s.updateStrand();
         };
     });
-    console.log("Mutation Complete")
+    systems.concat(tmpSystems).forEach(system=>{
+        system.nucleoside.geometry["attributes"].instanceColor.needsUpdate = true;
+        system.callUpdates(['instanceColor'])
+    });
     render();
 }

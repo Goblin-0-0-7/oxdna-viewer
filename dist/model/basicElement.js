@@ -7,7 +7,7 @@
 class BasicElement {
     id; //location in world - all systems
     sid; //in-system ID, only used if in a temporary system
-    selected;
+    selected = false;
     label;
     n3;
     n5;
