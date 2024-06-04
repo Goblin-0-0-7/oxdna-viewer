@@ -1,4 +1,3 @@
-
 class InstanceCopy {
     type: string;
     id: number;
@@ -573,22 +572,4 @@ function discretizeMassWrapper(option: number){
         editHistory.add(new RevertableAddition(InstMassSys, ret["elems"]));
         flux.prepIndxButton(ret["indx"]);
     }
-}
-
-function mutateWrapper(){
-    // initialize strands
-    // 
-
-    let e: BasicElement = Array.from(selectedBases).pop();
-    if (e == undefined) {
-        notify("Please select a monomer to mutate");
-        return;
-    }
-    let seq: string = view.getInputValue("sequence").toUpperCase();
-    if (seq == "") {
-        notify("Please type a sequence into the box");
-        return;
-    }
-    edit.mutate(e, seq);
-    topologyEdited = true;
 }

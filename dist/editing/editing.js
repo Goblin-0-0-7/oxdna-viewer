@@ -528,3 +528,19 @@ function discretizeMassWrapper(option) {
         flux.prepIndxButton(ret["indx"]);
     }
 }
+
+function mutateWrapper(){
+    systems[0].strands.forEach(s=>{
+        mutationStrands.push(new MutStrand(s));
+    });
+    
+    mut.mutateStrands();
+
+    mutationStrands.forEach(s=>{
+        if (s.mutationAllowed) {
+            s.updateStrand();
+        };
+    });
+    console.log("Mutation Complete")
+    render();
+}

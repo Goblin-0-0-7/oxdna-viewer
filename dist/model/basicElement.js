@@ -7,6 +7,7 @@
 class BasicElement {
     id; //location in world - all systems
     sid; //in-system ID, only used if in a temporary system
+    selected;
     label;
     n3;
     n5;
@@ -44,6 +45,7 @@ class BasicElement {
         }
     }
     select() {
+        this.selected = true;
         selectedBases.add(this);
         this.updateColor();
         const scale = 1.2;
@@ -52,6 +54,7 @@ class BasicElement {
         sys.callUpdates(['instanceScale']);
     }
     deselect() {
+        this.selected = false;
         selectedBases.delete(this);
         this.updateColor();
         this.setInstanceParameter('scales', [1, 1, 1]);
