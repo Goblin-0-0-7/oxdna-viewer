@@ -6,11 +6,11 @@ class MutStrand {
     preNucs: MutNucleotide[] = [];
     nucs: MutNucleotide[] = [];
     mutationAllowed = false;
-    propNick: number = 0;
-    propLigate: number = 0;
-    propInsert: number = 0;
+    probNick: number = 0;
+    probLigate: number = 0;
+    probInsert: number = 0;
 
-    constructor(strand: Strand) {
+    constructor(strand: Strand, baseProbs: number[]) {
         this.uniqueID = Math.floor(Math.random() * 16777215);
         this.oxDNAID = strand.id;
         let seq = strand.getSequence();
@@ -31,7 +31,7 @@ class MutStrand {
         }
 
         for (let i = 0; i < seq.length; i++) {
-            this.preNucs.push(new MutNucleotide(seq[i], mutationFlags[i]));
+            this.preNucs.push(new MutNucleotide(seq[i], mutationFlags[i], baseProbs));
         }
         this.nucs = this.preNucs;
     };

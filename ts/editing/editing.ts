@@ -575,8 +575,18 @@ function discretizeMassWrapper(option: number){
 }
 
 function mutateWrapper(){
+    
+    if (!mut.checkBaseProbabilities()) {
+        notify("Error: Total weight of bases has to be equal to 1");
+        return;
+    }
+    let baseProbs = [(<HTMLInputElement>document.getElementById('probA')).valueAsNumber,
+                    (<HTMLInputElement>document.getElementById('probC')).valueAsNumber,
+                    (<HTMLInputElement>document.getElementById('probG')).valueAsNumber,
+                    (<HTMLInputElement>document.getElementById('probT')).valueAsNumber];
+    
     systems[0].strands.forEach(s=>{
-        mutationStrands.push(new MutStrand(s));
+        mutationStrands.push(new MutStrand(s, baseProbs));
     });
     
     mut.mutateStrands();

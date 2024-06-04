@@ -4,10 +4,10 @@ class MutStrand {
     preNucs = [];
     nucs = [];
     mutationAllowed = false;
-    propNick = 0;
-    propLigate = 0;
-    propInsert = 0;
-    constructor(strand) {
+    probNick = 0;
+    probLigate = 0;
+    probInsert = 0;
+    constructor(strand, baseProbs) {
         this.uniqueID = Math.floor(Math.random() * 16777215);
         this.oxDNAID = strand.id;
         let seq = strand.getSequence();
@@ -26,7 +26,7 @@ class MutStrand {
             console.error("Error: Sequence and mutationFlags have different lengths");
         }
         for (let i = 0; i < seq.length; i++) {
-            this.preNucs.push(new MutNucleotide(seq[i], mutationFlags[i]));
+            this.preNucs.push(new MutNucleotide(seq[i], mutationFlags[i], baseProbs));
         }
         this.nucs = this.preNucs;
     }

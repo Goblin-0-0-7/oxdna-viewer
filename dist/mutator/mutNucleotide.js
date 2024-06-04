@@ -1,10 +1,11 @@
 class MutNucleotide {
     base;
     mutationAllowed;
-    propBases = [0.25, 0.25, 0.25, 0.25]; // A, C, G, T
-    constructor(base, mutationAllowed) {
+    probBases = [0.25, 0.25, 0.25, 0.25]; // A, C, G, T
+    constructor(base, mutationAllowed, baseProbs) {
         this.base = base;
         this.mutationAllowed = mutationAllowed;
+        this.probBases = baseProbs;
     }
     ;
     mutate() {
@@ -14,8 +15,8 @@ class MutNucleotide {
         const randomNum = Math.random();
         let cumulativeProp = 0;
         let newBase = '';
-        for (let i = 0; i < this.propBases.length; i++) {
-            cumulativeProp += this.propBases[i];
+        for (let i = 0; i < this.probBases.length; i++) {
+            cumulativeProp += this.probBases[i];
             if (randomNum <= cumulativeProp) {
                 newBase = ['A', 'C', 'G', 'T'][i];
                 break;
@@ -29,7 +30,7 @@ class MutNucleotide {
             console.error("Error: Total weight of bases is not equal to 1");
         }
         else {
-            this.propBases = [weightA, weightC, weightG, weightT];
+            this.probBases = [weightA, weightC, weightG, weightT];
         }
     }
 }
